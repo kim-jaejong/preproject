@@ -15,9 +15,12 @@ import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import kim.jae.jong.myapplication.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+
     private lateinit var image: ImageView
     private lateinit var galleray: Button
     private lateinit var drawButton: Button
@@ -30,12 +33,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+       binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        image = findViewById(R.id.imageView)
-        galleray = findViewById(R.id.galleray)
-
-        drawButton = findViewById(R.id.drawButton)
+        image = binding.imageView
+        galleray = binding.galleray
+        drawButton = binding.drawButton
 
         image.setOnClickListener {
             launcher.launch("image/*")
